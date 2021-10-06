@@ -1,20 +1,20 @@
-import { useState } from 'react';
 import { CreateTodo } from './CreateTodo';
 import { TodoItem } from './TodoItem';
 import { v4 as uuidv4 } from 'uuid';
+import { useLocalStorageState } from '../utils/localStorage';
 
 export const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 0, name: 'Learn about components' },
-    { id: 1, name: 'Learn about props' },
-    { id: 2, name: 'Learn about state' },
+  const [todos, setTodos] = useLocalStorageState('todos', [
+    { id: uuidv4(), name: 'Learn about components' },
+    { id: uuidv4(), name: 'Learn about props' },
+    { id: uuidv4(), name: 'Learn about state' },
   ]);
 
   return (
     <>
       <ul>
         {todos.map(({ id, name }) => (
-          <TodoItem key={id} name={name} />
+          <TodoItem key={id} id={id} name={name} />
         ))}
       </ul>
       <CreateTodo

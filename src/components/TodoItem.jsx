@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useLocalStorageState } from '../utils/localStorage';
 import './TodoItem.css';
 
-export const TodoItem = ({ name }) => {
-  const [isDone, setIsDone] = useState(false);
+export const TodoItem = ({ name, id }) => {
+  const [isDone, setIsDone] = useLocalStorageState(
+    'todo--is-done:' + id,
+    false,
+  );
 
   return (
     <li
