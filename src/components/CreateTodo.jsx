@@ -3,14 +3,15 @@ export const CreateTodo = ({ onCreate }) => {
     <form
       className="CreateTodo"
       onSubmit={(event) => {
+        event.preventDefault();
         const form = event.target;
         const newTodo = form.elements.newTodo.value;
+        form.reset();
         onCreate(newTodo);
-        event.preventDefault();
       }}
     >
       <input type="text" name="newTodo" />
-      <input type="submit" />
+      <input type="submit" value="Add" />
     </form>
   );
 };
