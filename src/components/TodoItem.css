@@ -1,7 +1,14 @@
-.TodoItem {
+.TodoItem__name {
   cursor: pointer;
 }
 
-.TodoItem--is-done {
+.TodoItem__remove {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+}
+
+.TodoItem--is-done .TodoItem__name {
   text-decoration: line-through;
+  opacity: 0.5;
 }
